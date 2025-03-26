@@ -1,6 +1,7 @@
 # BaseWorkflow 仓库中的 .github/workflows/main-workflow.yml
 name: Base Reusable Workflow
 on:
+  workflow_dispatch:
   workflow_call:
     inputs:
       example_input:
