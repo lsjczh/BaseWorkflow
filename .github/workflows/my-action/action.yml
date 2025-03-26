@@ -1,14 +1,11 @@
-# ./.github/actions/my-action/action.yml
-name: "My Shell Action"
-description: "A custom composite action that runs a shell command"
+name: 'My Custom Action'
+description: 'An action that echoes the example_input parameter'
 inputs:
-  some_parameter:
-    description: "An input parameter to echo"
+  example_input:
+    description: 'The input to be echoed'
     required: true
-    default: "World"
 runs:
-  using: "composite"
+  using: 'composite'
   steps:
-    - name: Run shell command
-      run: echo "Hello ${{ inputs.some_parameter }}"
-      shell: bash
+    - name: Echo example_input
+      run: echo "${{ inputs.example_input }}"
