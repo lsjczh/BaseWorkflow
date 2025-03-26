@@ -1,0 +1,14 @@
+# ./.github/actions/my-action/action.yml
+name: "My Shell Action"
+description: "A custom composite action that runs a shell command"
+inputs:
+  some_parameter:
+    description: "An input parameter to echo"
+    required: true
+    default: "World"
+runs:
+  using: "composite"
+  steps:
+    - name: Run shell command
+      run: echo "Hello ${{ inputs.some_parameter }}"
+      shell: bash
