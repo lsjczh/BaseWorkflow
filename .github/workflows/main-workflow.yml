@@ -1,27 +1,20 @@
-name: Main Workflow
-
+# BaseWorkflow 仓库中的 .github/workflows/main-workflow.yml
+name: Base Reusable Workflow
 on:
-  push:
-    branches:
-      - main
-      - dev
-  workflow_dispatch:   # 允许手动触发
-
+  workflow_dispatch:
+  workflow_call:
+    inputs:
+      example_input:
+        required: true
+        type: string
 jobs:
-  run-actions:
+  run-my-action:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Run custom action from BaseWorkflow
+        # 这里的相对路径引用 BaseWorkflow 仓库中的 action 文件
+        uses: ./.github/actions/my-action
         with:
-          ref: ${{ github.ref_name }}
-
-      - name: Run Action One
-        uses: ./github/actions/action-one
-        with:
-          branch: ${{ github.ref_name }}
-
-      - name: Run Action Two
-        uses: ./github/actions/action-two
-        with:
-          branch: ${{ github.ref_name }}
+          some_parameter: ${{ inputs.example_input }}
