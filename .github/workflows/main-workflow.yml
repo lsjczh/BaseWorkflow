@@ -2,9 +2,9 @@
 name: Base Reusable Workflow
 on:
   workflow_dispatch:
-  workflow_call:
     inputs:
       example_input:
+        description: 'Input for example action'
         required: true
         type: string
 jobs:
