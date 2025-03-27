@@ -8,4 +8,5 @@ runs:
   using: 'composite'
   steps:
     - name: Echo example_input
+      shell: bash
       run: echo "${{ inputs.example_input }}"
