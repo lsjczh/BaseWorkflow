@@ -22,4 +22,4 @@ jobs:
         # 这里的相对路径引用 BaseWorkflow 仓库中的 action 文件
         uses: ./.github/actions/my-action
         with:
-          some_parameter: ${{ inputs.example_input }}
+          example_input : ${{ inputs.example_input }}
