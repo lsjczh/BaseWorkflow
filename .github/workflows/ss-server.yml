@@ -1,0 +1,33 @@
+name: Start SS Server
+
+on:
+  workflow_dispatch:  # 手动触发
+  push:               # 推送代码也可触发
+    branches:
+      - main
+
+jobs:
+  start-ss:
+    runs-on: ubuntu-latest  # 运行环境
+    steps:
+      - name: Install Shadowsocks
+        run: |
+          sudo apt update
+          sudo apt install shadowsocks-libev -y
+
+      - name: Configure SS Server
+        run: |
+          cat <<EOF | sudo tee /etc/shadowsocks-libev/config.json
+          {
+            "server":"0.0.0.0",
+            "server_port":8388,
+            "password":"your_password",
+            "method":"aes-256-gcm",
+            "fast_open": true,
+            "mode": "tcp_and_udp"
+          }
+          EOF
+          sudo systemctl restart shadowsocks-libev
+
+      - name: Show Public IP
+        run: curl -s ifconfig.me
