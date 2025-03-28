@@ -1,14 +1,11 @@
 name: Start SS Server
 
 on:
-  workflow_dispatch:  # 手动触发
-  push:               # 推送代码也可触发
-    branches:
-      - main
+  workflow_dispatch:  # 允许手动触发
 
 jobs:
   start-ss:
-    runs-on: ubuntu-latest  # 运行环境
+    runs-on: ubuntu-latest
     steps:
       - name: Install Shadowsocks
         run: |
@@ -31,3 +28,6 @@ jobs:
 
       - name: Show Public IP
         run: curl -s ifconfig.me
+
+      - name: Keep Running for 6 Hours
+        run: sleep 21600  # 让任务持续 6 小时
