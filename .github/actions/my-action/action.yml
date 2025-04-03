@@ -10,5 +10,5 @@ runs:
     - name: Echo example_input
       shell: bash
       run: |
-      echo "This dev branch"
-      echo "${{ inputs.example_input }}"
+        echo "This dev branch"
+        echo "${{ inputs.example_input }}"
