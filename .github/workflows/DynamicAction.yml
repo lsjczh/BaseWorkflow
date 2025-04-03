@@ -12,9 +12,6 @@ jobs:
   dynamic-action:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        
       - uses: lsjczh/BaseWorkflow/.github/actions/dynamic-uses@main
         with:
           uses: lsjczh/BaseWorkflow/.github/actions/my-action@${{ github.event.inputs.action_version }}
