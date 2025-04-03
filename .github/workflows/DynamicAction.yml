@@ -18,4 +18,4 @@ jobs:
       - uses: lsjczh/BaseWorkflow/.github/actions/dynamic-uses@main
         with:
           uses: lsjczh/BaseWorkflow/.github/actions/my-action@${{ github.event.inputs.action_version }}
-          with: '{ "node-version": 18 }'
+          with: '{ "example_input": 18 }'
