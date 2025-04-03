@@ -1,0 +1,19 @@
+name: Dynamic Action Version
+
+on:
+  workflow_dispatch:
+    inputs:
+      action_version:
+        description: "Action Version (e.g., v1, v2, main)"
+        required: true
+        default: "v1"
+
+jobs:
+  dynamic-action:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run Dynamic Action
+        uses: my-org/my-action@${{ inputs.action_version }}  # 动态指定 Action 版本
