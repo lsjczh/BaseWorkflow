@@ -15,12 +15,15 @@ on:
 jobs:
   run-my-action:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version: ["${{ github.event.inputs.example_input }}"]
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
           repository: lsjczh/BaseWorkflow
       - name: Run custom action from BaseWorkflow 
-        uses: lsjczh/BaseWorkflow/.github/actions/my-action@${{ github.event.inputs.example_input }}
+        uses: lsjczh/BaseWorkflow/.github/actions/my-action@${{ matrix.version }}
         with:
           example_input : ${{ inputs.example_input }}
