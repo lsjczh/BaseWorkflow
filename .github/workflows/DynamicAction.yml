@@ -14,10 +14,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
-      - name: Set Action Version
-        id: version
-        run: echo "VERSION=${{ github.event.inputs.action_version }}" >> $GITHUB_ENV  # 将版本号存入环境变量
-
-      - name: Run Dynamic Action
-        uses: my-org/my-action@${{ env.VERSION }}  # 动态指定 Action 版本
+        
+      - uses: lsjczh/BaseWorkflow/.github/actions/dynamic-uses@main
+        with:
+          uses: lsjczh/BaseWorkflow/.github/actions/my-action@$${{ github.event.inputs.action_version }}
+          with: '{ "node-version": 18 }'
