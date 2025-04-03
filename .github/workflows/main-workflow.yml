@@ -20,8 +20,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: lsjczh/BaseWorkflow
-      - name: Run custom action from BaseWorkflow
-        # 这里的相对路径引用 BaseWorkflow 仓库中的 action 文件
-        uses: lsjczh/BaseWorkflow/.github/actions/my-action@dev
+      - name: Run custom action from BaseWorkflow 
+        uses: lsjczh/BaseWorkflow/.github/actions/my-action@${{ github.event.inputs.example_input }}
         with:
           example_input : ${{ inputs.example_input }}
